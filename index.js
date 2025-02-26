@@ -6,12 +6,12 @@ import routes from "./routes/routes.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(cors());
 
 app.use("/", routes);
 
 app.use("/", (req, res) => {
-  res.send("Hello World");
+  res.status(200).send("Hello World");
 });
 
 const port = process.env.PORT || 3000;
