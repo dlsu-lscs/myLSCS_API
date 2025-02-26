@@ -2,20 +2,19 @@ import axios from "axios";
 
 export const validateMemberByEmail = async (email) => {
   try {
-    const res = await axios({
-      method: "post",
-      url: "https://auth.app.dlsu-lscs.org/member",
-      headers: {
-        Authorization: `Bearer ${process.env.LSCS_AUTH_KEY}`,
-        "Content-Type": "application/json",
-      },
-      data: {
-        email: email,
-      },
-    });
+    const res = await axios.post(
+      "https://auth.app.dlsu-lscs.org/member",
+      { email },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.LSCS_AUTH_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     return res.data;
-  } catch (error) {
+  } catch (err) {
     throw new Error(err.res ? err.res.data : err.message);
   }
 };
