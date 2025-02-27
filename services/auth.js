@@ -15,6 +15,6 @@ export const validateMemberByEmail = async (email) => {
 
     return res.data
   } catch (err) {
-    throw new Error(err.res ? err.res.data : err.message)
+    throw new Error(err.response ? err.response.data : err.message)
   }
 }
