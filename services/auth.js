@@ -1,20 +1,20 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const validateMemberByEmail = async (email) => {
   try {
     const res = await axios.post(
-      "https://auth.app.dlsu-lscs.org/member",
+      'https://auth.app.dlsu-lscs.org/member',
       { email },
       {
         headers: {
           Authorization: `Bearer ${process.env.LSCS_AUTH_KEY}`,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       }
-    );
+    )
 
-    return res.data;
+    return res.data
   } catch (err) {
-    throw new Error(err.res ? err.res.data : err.message);
+    throw new Error(err.res ? err.res.data : err.message)
   }
-};
+}
